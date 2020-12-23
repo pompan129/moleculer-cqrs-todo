@@ -1,10 +1,9 @@
 // event-sourcing-storage/index.js
 
-const createEsStorage = require("resolve-storage-lite").default;
+const createAdapter = require("resolve-storage-lite").default;
 
-const eventStore = createEsStorage({
-	databaseFile: "./data/event-store.sqlite",
+const fileAdapter = createAdapter({
+	databaseFile: "./store.db",
 });
-
-module.exports = eventStore;
-
+fileAdapter.init();
+module.exports = fileAdapter;
